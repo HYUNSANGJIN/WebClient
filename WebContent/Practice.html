@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Div (영역을 정의하는 태그) (페이지 레이아웃)</title>
+<style type="text/css">
+   #container{width: 940px; margin: 10px; padding: 10px; border: 5px solid black}
+   #header{border: 5px solid black;background-color: darkgray; text-align: center;}
+   #nav{width: 300px;height: 300px; border: 3px solid black; float: left}
+   #article{width: 400px; height: 300px; border: 3px solid black; text-align: center; float: left }
+   #footer{border: 3px solid black; clear: both; background-color: darkgray;}/* 너는 너 위치를 지켜라(다른 사람이 float했다고 따라가지 마셈) */
+   #ex2{width: 220px;height: 300px; border: 3px solid black; float: left}
+   
+
+</style>
+</head>
+<body>
+   <div id = "container">
+      <div id="header">
+         <h3> 상진이의 성장일기 </h3>
+      </div>
+      <div id ="nav">
+         <ul>
+            <li><a href ="#">JAVA</a></li>
+            <li><a href ="#">Oracle</a></li>
+            <li><a href ="#">CSS</a></li>
+         </ul>
+      </div>
+      <div id = "article">
+          <h1>JAVA 성장일기</h1>
+    <p>오늘도 자바를 열심히 공부하던중 갑자기 윗집에서 쿵쿵 거렸다. 몇일동안 참은 나는 너무 화가나나 나머지 위층으로 올라가서 문을 두드렸다.</p>
+    <p>쾅쾅쾅!! 윗층 문이 열리고 난 얼어붙을수 밖에 없었다. 윗층 아주머니의 표정과 그 뒤에 사람이[더보기]</p>
+      </div>
+      <div id="ex2">
+      	<h3>대충 광고 나옴</h3>
+      	<h5>예쁘고 잘생긴 아이돌들이 춤추고 있음</h5>
+      </div>
+     
+      <div id = "footer">
+         www.sangjin jjang.co.kr
+      </div>
+   </div>
+</body>
+</html>

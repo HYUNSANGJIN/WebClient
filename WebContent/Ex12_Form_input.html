@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>form 안에 input 태그</title>
+</head>
+<body>
+	<form action="">
+		<fieldset>
+			<legend>Text:Password</legend>
+			Text: <input type="text" name="userid" id="userid"><br>
+			Password: <input type="password" name="pwd" maxlength="5"><br>
+			<hr>
+			Text: <input type="text" name="userid" id="userid" maxlength="10" size="100px" value="기본값"><br>
+			
+			<hr>
+			<!-- readonly -> 편집불가 -->
+			readonly(읽기전용 : 서버로 데이터가 전송 가능)
+			<input type="text" name="userid" value="hyun" readonly="readonly"><br>
+			<br>
+			<!-- disabled -> 편집불가 -->
+			disabled(비활성화 : 서버로 데이터 전송 불가능)
+			<input type="text" name="userid" value="jeong" disabled="disabled"><br>
+		</fieldset>
+		<fieldset>
+			<legend>체크박스(다중선택)</legend>
+			농구:<input type="checkbox" name="sports_1" value="A"checked="checked"><!--checked하면 체크 된 상태로 나옴  -->
+			야구:<input type="checkbox" name="sports_2" value="B">
+			축구:<input type="checkbox" name="sports_3" value="C">
+		</fieldset>
+		<!-- register.jsp?sports_1=A&sports_2=B&sports_3=C ->(목적지 출발)
+				ㄴ get방식으로 서버에 전송되면 이런데이터를 가지고 넘어간다는 뜻
+				
+			 register.jsp
+			 String s = request.getParameter("sports_1")
+			 String s1 = request.getParameter("sports_2")
+			 String s2 = request.getParameter("sports_3")
+			 ㄴ s변수에는 A라는 글자가 들어가 있는거임 -> 로직에 따라서 
+			 
+			농구:<input type="checkbox" name="sports" value="A"checked="checked">
+			야구:<input type="checkbox" name="sports" value="B">
+			축구:<input type="checkbox" name="sports" value="C">
+			  ㄴ 이름이 똑같을땐 파라메터만 다른값으로 넘어감
+			  
+			  get 서버 전송
+			  ㄴ register.jsp?sports=A&sports=B&sports=C ->(목적지 출발)
+			  
+			  	register.jsp
+			  	 ㄴ String[] strarr = request.getParameterValues(sports)
+			  	     ㄴ getParameterValues 내부에 -> String[] s = {"A","B","C"}
+			  	 	strarr[0] >> A
+			  	 	strarr[1] >> B
+			  	 	strarr[2] >> C
+			
+		 -->
+		 <fieldset>
+		 	<legend>Select 태그(단일선택 년, 월, 일)</legend>
+		 	
+		 	<!-- select 는 option을 자식으로 가진다 -->
+		 	<select name="year">
+		 		<option value="2021">2021년</option>
+		 		<option value="2020" selected>2020년</option>
+		 		<option value="2019">2019년</option>
+		 	</select>
+		 	<!-- 
+		 		register.jsp?year=2020   -> 2020년을 선택했다고 치면
+		 		 ㄴ 웹을 통해서 서버로 가는 데이터는 다 문자열 데이터임(string)
+		 		 
+		 		
+		 		register.jsp
+		 		 ㄴ String year = request.getParameter("year");
+		 		 ㄴ int year = Integer.parseInt(request.getParameter("year")); -> 문자열을 숫자로 바꾸기
+		 	 -->
+		 </fieldset>
+		 
+		 <fieldset>
+		 	<legend>Select 태그(다중선택)</legend>
+		 	
+		 	<!-- select 는 option을 자식으로 가진다 -->
+		 	<select name="year" multiple> <!--접근성이 떨어져서 이 기능은 잘 안씀 -->
+		 		<option value="2021">2021년</option>
+		 		<option value="2020" selected>2020년</option>
+		 		<option value="2019">2019년</option>
+		 	</select>
+		 	<!-- 
+		 		register.jsp?year=2019&year=2020&year=2021 
+		 		 ㄴ -> 체크박스 다중선택 원리랑 똑같다(배열처리)
+		 	 -->
+		 </fieldset>
+		 <fieldset>
+		 <!-- name을 똑같이 줘야 하나의 그룹으로 묶어 단일 선택 가능해짐 -->
+		 <!-- checked 설정해놓은 곳에는 디폴트로 선택되어짐 -->
+		 	<legend>라디오 버튼(단일선택 : 남, 여 선택): name속성이 같으면 하나의 그룹으로 잡아줌</legend>
+		 	여<input type="radio" name="gender" value="1"><br>
+		 	남<input type="radio" name="gender" value="2" checked><br>
+		 	<hr>
+		 	대<input type="radio" name="product" value="1"><br>
+		 	중<input type="radio" name="product" value="2" checked><br>
+		 	소<input type="radio" name="product" value="3"><br>
+		 </fieldset>
+		 <fieldset>
+		 	<legend>기타 등등..</legend>
+		 	1. 화면에 출력이 안돼 ㅠㅠ(소스는 있어용)
+		 	<input type="hidden" value="1000" name="data">
+		 	<hr>
+		 	2. 파일 업로드(클라이언트 파일 선택 가능하게 해주는 태그)
+		 	<input type="file" name="imgupload">
+		 	<hr>
+		 	3. 게시판 글쓰기 (여러줄) : 초기 화면의 크기(rows, cols 사용하면 몇줄의 몇칸!!)
+		 	<textarea rows="10" cols="10"></textarea><!-- 10줄에 10칸을 만들겠다. -->
+		 	<!--데이터가 많아지면 스크롤이 자동 생성  -->
+		 	<hr>
+		 	4. 각종 버튼 들
+		 	<input type="button" value="나 눌러봐" onclick="alert('쉬는 시간')">
+		 	<!--나 눌러봐 버튼 누르면 쉬는시간 뜸  -->
+		 	<br>
+		 	<!-- 
+		 		type="image" 내부적으로 submit
+		 		type="submit"
+		 		type="reset"
+		 	 -->
+		 </fieldset>
+	</form>
+</body>
+</html>

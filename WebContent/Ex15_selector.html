@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS 선택자</title>
+<style type="text/css">
+	/* 
+		CSS사용, JAVA SCRIPT 사용가능
+		
+		1. 기본 선택자(기존에 존재하는 태그 : p, div, hr, h3)
+		ex) p {color: red}
+		
+		2. 다중(group) 선택자
+		ex) p, h1, h2, h3 {color : red}
+		
+		3. 사용자 정의(class, id)
+		ex) .my {color : red} -> 범용적 (page 여러번 사용)
+			.you {color:red}
+		    ㄴ <p class="my"></p>
+		    	<p class="my you"></p>
+		    	
+		    	#idstyle {color:pink} 식별자(page 당 1개만 쓰겠당)
+		    	<div id="idstyle"></div>
+		    	
+		4. 결합 선택자
+	        p{color:black}
+	   		p.one {border: 1px}
+	    	p.two {border: 5px}
+	    	 ㄴ ex) <p></p> color:black
+	    	  	    <p class="one""></p>   ..color:black .. border:1px
+	    	  	    <p class="two""></p>   ..color:black .. border:5px
+	    	  	    
+	    5. [자손], 후손 선택자
+	    div p{color: green; }
+	    
+	    6. [자식]
+	    .parent -> p
+	    
+	    7. 속성 선택자(Attribute > color, font, size)
+	    input[type=text] {color:red} -> type이 text인 애 색깔을 빨간색으로 바꿔라
+	    input[type=button] {font-size:10px}
+	    
+	    8. + -> 인접한 형제 selector(선택자) -> (div +p)
+	    ex) div +p {}
+	    
+	       ~ -> 일반 형제 selector -> (div ~p)
+	       
+	    9. 가상 선택자(의미만 존재 -> a:hover)
+	    ex) a:hover{}
+	    	a.hi:hover {} 
+	    	ㄴ <a class="hi"></a>
+	    	
+	    10. 셀렉터[어트리뷰트^=”값”]	지정된 어트리뷰트 값으로 시작하는 요소를 선택한다.
+	        셀렉터[어트리뷰트$=”값”]	지정된 어트리뷰트 값으로 끝나는 요소를 선택한다.
+	    
+	    ----------------------------------------------------------------------------
+	    div{
+	     	display:none;  -> 화면에 안보이는 것(마우스 올리면 보이고, 내리면 사라지는거)
+	    }
+	    
+	    	div:hover p{  -> div태그에 마우스를 올리면 div태그가 가지고 있는 자식요소 중 p를 보여주게 해라
+	    		display:block;
+	    	}
+	    	
+	    	
+	 */
+	 
+	 
+		div p{color: green; font-family: "궁서체", "명조체", "광수체"}
+		/* ㄴ자손 요소 걸기 */
+		/* div가 가지는 모든 p태그 (자식, 자손 포함)*/
+		
+	 .parent > p{border: 1px double blue; padding: 10px; font-size: 15px}
+	    /* ㄴ자식 요소 걸기 */
+	 
+	 input[type=text]{color: blue;}
+	 input[type=button]{color: red;}
+	 
+	 
+</style>
+</head>
+<body>
+	<p>나는 스타일 적용 될까</p>
+	<div>DIV 태그</div>
+	
+	<h3>하위(자손) 선택자</h3>
+	<div>
+			<p>선택자</p>
+			<p>선택자2
+				<p>선택자3</p>
+			</p>
+			<div>
+				<p>선택자4</p>
+			</div>
+	</div>
+			<h3>자식 선택자</h3>
+			<div class="parent">
+				<p>문단태그</p>
+				<div>
+					<p>나는 p태그</p>
+				</div>
+				<p>나도 문단태그</p>
+			</div>
+			<hr>
+			<input type="text" value="css적용">
+			<br>
+			<input type="button" value="css적용">
+			<br>
+			<input type="password" value="css적용될까">
+</html>
